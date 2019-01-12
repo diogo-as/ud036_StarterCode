@@ -1,8 +1,8 @@
 import fresh_tomatoes
 import media
 
-mi_fallout = media.Movie("Mission: Impossible - Fallout",
-                        "Ethan Hunt race against time after a mission gone wrong",
+mi_fallout = media.Movie("MI - Fallout",
+                        "Ethan race against time after a mission gone wrong",
                         "https://upload.wikimedia.org/wikipedia/pt/2/21/Mission_Impossible_%E2%80%93_Fallout.jpg",
                         "https://www.youtube.com/watch?v=XiHiW4N7-bo")
 
