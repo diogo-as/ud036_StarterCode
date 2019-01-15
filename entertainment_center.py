@@ -1,6 +1,6 @@
 import fresh_tomatoes
 import media
-
+#Creating instances of the class Movie
 mi_fallout = media.Movie("MI - Fallout",
                         "Ethan race against time after a mission gone wrong",
                         "https://upload.wikimedia.org/wikipedia/pt/2/21/Mission_Impossible_%E2%80%93_Fallout.jpg",
@@ -30,8 +30,7 @@ the_revenant = media.Movie("The Revenant",
                       "A man fights for survival after being mauled by a bear and left to dead",
                       "https://upload.wikimedia.org/wikipedia/pt/0/03/TheRevenant-Poster.png",
                       "https://www.youtube.com/watch?v=LoebZZ8K5N0")
-
-#print (spectre.storyline)
-#spectre.show_trailer()
+#Creating a list for movies objects
 movies = [mi_fallout, the_angel, avengers_infinity_war, spectre, resistence_banker, the_revenant]
+#Passing movie list to the method open_movies_page
 fresh_tomatoes.open_movies_page(movies)
