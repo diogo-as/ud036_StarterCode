@@ -1,36 +1,30 @@
 import fresh_tomatoes
 import media
-#Creating instances of the class Movie
-mi_fallout = media.Movie("MI - Fallout",
-                        "Ethan race against time after a mission gone wrong",
-                        "https://upload.wikimedia.org/wikipedia/pt/2/21/Mission_Impossible_%E2%80%93_Fallout.jpg",
-                        "https://www.youtube.com/watch?v=XiHiW4N7-bo")
+from imdb import IMDb
 
-the_angel = media.Movie("The Angel",
-                     "The egyptian spy who saved Israel",
-                     "https://m.media-amazon.com/images/M/MV5BMTEzOTY5ODA2MDReQTJeQWpwZ15BbWU4MDI5NDkyMTYz._V1_SY1000_CR0,0,682,1000_AL_.jpg",
-                     "https://www.youtube.com/watch?v=z0q2WbXQWbw")
+#create an instance of imbd class
+ia = IMDb()
+#Creating a dictionarie with my best movies title and trailer url
+mybestmovies = {
+                '%mission: impossible - fallout%':'https://www.youtube.com/watch?v=XiHiW4N7-bo',
+                'The Angel':'https://www.youtube.com/watch?v=z0q2WbXQWbw',
+                'Avengers: Infinity War':'https://www.youtube.com/watch?v=hA6hldpSTF8',
+                '007 Spectre':'https://www.youtube.com/watch?v=z4UDNzXD3qA',
+                'The Resistence Banker':'https://www.youtube.com/watch?v=31pzuZSvzvU',
+                'The Revenant':'https://www.youtube.com/watch?v=LoebZZ8K5N0'
+                }
+#Creating a list of movie objects
+bestmovieslist = []
 
-avengers_infinity_war = media.Movie("Avengers: Infinity War",
-                      "The avengers and their allies against Thanos",
-                      "https://upload.wikimedia.org/wikipedia/pt/9/90/Avengers_Infinity_War.jpg",
-                      "https://www.youtube.com/watch?v=hA6hldpSTF8")
+for name in mybestmovies.keys():
+    movielist = ia.search_movie(name) #search movie by the string of title
+    moviechoice = movielist[0] #choice the first result
+    ia.update(moviechoice) #update with full data
+    storylist = moviechoice.get('plot') #get list of storylist
+    storyline = storylist[0] #get the first storyline
+    cover = moviechoice.get('full-size cover url') #get the full cover url
+    movie_trailer = mybestmovies[name] #get the movie trailer
+    bestmovieslist.append(media.Movie(moviechoice, storyline, cover, movie_trailer)) #create an object movie with the variables needded
 
-spectre = media.Movie("007 Spectre",
-                      "007 against Spectre, a terrorist organization",
-                      "https://upload.wikimedia.org/wikipedia/pt/1/1a/Spectre-007.png",
-                      "https://www.youtube.com/watch?v=z4UDNzXD3qA")
-
-resistence_banker = media.Movie("The Resistence Banker",
-                      "A banker in occupied Amsterdam setting up a clandestine bank to finance resistance",
-                      "https://upload.wikimedia.org/wikipedia/en/d/dd/The_Resistance_Banker.jpg",
-                      "https://www.youtube.com/watch?v=31pzuZSvzvU")
-
-the_revenant = media.Movie("The Revenant",
-                      "A man fights for survival after being mauled by a bear and left to dead",
-                      "https://upload.wikimedia.org/wikipedia/pt/0/03/TheRevenant-Poster.png",
-                      "https://www.youtube.com/watch?v=LoebZZ8K5N0")
-#Creating a list for movies objects
-movies = [mi_fallout, the_angel, avengers_infinity_war, spectre, resistence_banker, the_revenant]
 #Passing movie list to the method open_movies_page
-fresh_tomatoes.open_movies_page(movies)
+fresh_tomatoes.open_movies_page(bestmovieslist)
