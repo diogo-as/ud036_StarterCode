@@ -123,9 +123,8 @@ main_page_content = '''
 # A single movie entry html template with the storyline header
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
+    <img title="{movie_storyline}" src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
-    <h5>{movie_storyline}</h5>
 </div>
 '''
 
