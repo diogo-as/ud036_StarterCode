@@ -9,7 +9,7 @@ main_page_head = '''
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
+    <title>The best movies!</title>
 
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -19,6 +19,9 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background-color: #708090;
+            background-image: linear-gradient(to bottom,#808080 0,#D3D3D3 100%);
+            background-repeat: repeat-x;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -40,7 +43,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background-color: #FFFFFF;
             cursor: pointer;
         }
         .scale-media {
@@ -56,6 +59,31 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+          .image {
+        opacity: 1;
+        transition: .5s ease;
+        }
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+          }
+          .box:hover .image {
+            opacity: 0.2;
+          }
+          .box:hover .middle {
+            opacity: 1;
+          }
+          .textnew {
+            color: black
+            font-size: 16px;
+            padding: 16px 32px;
+          }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -122,8 +150,11 @@ main_page_content = '''
 
 # A single movie entry html template with the storyline header
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img title="{movie_storyline}" src="{poster_image_url}" width="220" height="342">
+<div class="col-md-6 col-lg-4 movie-tile text-center box" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <img class="image" src="{poster_image_url}" alt="{movie_title}" width="220" height="342">
+        <div class="middle">
+            <div class="textnew">{movie_storyline}</div>
+        </div>
     <h2>{movie_title}</h2>
 </div>
 '''
